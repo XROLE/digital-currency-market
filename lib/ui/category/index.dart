@@ -1,5 +1,6 @@
 import 'package:dcm/data/category/cate_item.dart';
 import 'package:dcm/data/category/trending.dart';
+import 'package:dcm/ui/itemDetail/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -18,7 +19,9 @@ class CategoryPage extends StatelessWidget {
                 height: 55,
                 width: 55,
                 decoration: BoxDecoration(
-                  color: _trending.isFollowing ? Color.fromRGBO(253, 118, 57, 1) : Color.fromRGBO(148, 172, 188, 1),
+                  color: _trending.isFollowing
+                      ? Color.fromRGBO(253, 118, 57, 1)
+                      : Color.fromRGBO(148, 172, 188, 1),
                   shape: BoxShape.circle,
                 ),
                 child: Center(
@@ -55,14 +58,13 @@ class CategoryPage extends StatelessWidget {
                 width: 120,
                 decoration: BoxDecoration(
                   color: _trending.isFollowing ? Color.fromRGBO(199, 200, 202, 1) : Colors.white,
-                  border: _trending.isFollowing ? null : Border.all(color: Color.fromRGBO(199, 200, 202, 1)),
+                  border: _trending.isFollowing
+                      ? null
+                      : Border.all(color: Color.fromRGBO(199, 200, 202, 1)),
                   borderRadius: BorderRadius.circular(50),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                  if(_trending.isFollowing)
-                  Icon(Icons.check, size: 20),
+                child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  if (_trending.isFollowing) Icon(Icons.check, size: 20),
                   SizedBox(width: 8),
                   Text(
                     _trending.isFollowing ? 'Following' : 'Follow',
@@ -156,12 +158,18 @@ class CategoryPage extends StatelessWidget {
                             height: 120,
                             width: 120,
                             decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                            child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: Image.asset(
-                                  cateItemList[i].imageUrl,
-                                  fit: BoxFit.cover,
-                                )),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) => ItemDetailsPage(cateItem: cateItemList[i],)));
+                              },
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image.asset(
+                                    cateItemList[i].imageUrl,
+                                    fit: BoxFit.cover,
+                                  )),
+                            ),
                           ),
                         ),
                         SizedBox(height: 15),
@@ -292,7 +300,7 @@ class CategoryPage extends StatelessWidget {
                 )),
             SizedBox(height: 15),
             Container(
-              height: _size.height -600,
+              height: _size.height - 600,
               child: ListView.builder(
                 padding: EdgeInsets.all(0),
                 itemCount: trendingList.length,
@@ -314,5 +322,3 @@ final List<String> navKeys = [
   'Boosted',
   'Jundiation'
 ];
-
-
