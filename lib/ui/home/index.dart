@@ -1,3 +1,4 @@
+import 'package:dcm/ui/category/index.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -92,7 +93,8 @@ class HomePage extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      print('I am a chosen one you tapped me');
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => CategoryPage()));
                     },
                     child: Container(
                       decoration: BoxDecoration(

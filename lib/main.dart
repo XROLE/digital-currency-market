@@ -1,4 +1,4 @@
-import 'package:dcm/ui/home/home_page.dart';
+import 'package:dcm/ui/home/index.dart';
 import 'package:flutter/material.dart';
 
 void main() {
