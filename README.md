@@ -1,6 +1,6 @@
-# dcm
+# dcm 
 
-A new Flutter project.
+Decentralize currency market.
 
 ## Getting Started
 
